@@ -1,10 +1,19 @@
 import DBS from './DBS.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
+import Home from './components/Home';
+import Insurance from './components/Insurance';
+import CreditCard from './components/CreditCard';
+import Promo from './components/Promo';
+import About from './components/About';
+import Customers from './components/Customers';
 
-function App() {
+
+const App = () => {
   return (
+    <Router>
     <div className="App">
       <Navbar bg="dark" variant="dark"
       sticky = "top">
@@ -13,21 +22,42 @@ function App() {
         </Navbar.Brand>
 
         <Nav>
+        <Nav.Link as={Link} to="/">Home</Nav.Link>
           <NavDropdown title="Products">
-            <NavDropdown.Item href="products/insurance">Insurance</NavDropdown.Item>
-            <NavDropdown.Item href="products/creditcard">CreditCard</NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/insurance">Insurance</NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/creditcard">CreditCard</NavDropdown.Item>
             <NavDropdown.Divider/>
-            <NavDropdown.Item href="products/promo">Promo</NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/promo">Promo</NavDropdown.Item>
           </NavDropdown>
-        <Nav.Link href="blog">Blog</Nav.Link>
-        <Nav.Link href="about-us">About Us</Nav.Link>
-        <Nav.Link href="contact-us">Contact Us</Nav.Link>
+        <Nav.Link as={Link} to="/customers">Customers</Nav.Link>
+        <Nav.Link as={Link} to="/about-us">About Us</Nav.Link>
+        <Nav.Link as={Link} to="/contact-us">Contact Us</Nav.Link>
         </Nav>
       </Navbar>
       <div className="content">
-        This is a content.
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/insurance">
+            <Insurance />
+          </Route>
+          <Route exact path="/creditcard">
+            <CreditCard />
+          </Route>
+          <Route exact path="/promo">
+            <Promo />
+          </Route>
+          <Route exact path = "/customers">
+            <Customers />
+          </Route>
+          <Route exact path = "/about-us">
+            <About />
+          </Route>
+        </Switch>
       </div>
     </div>
+    </Router>
   );
 }
 
