@@ -1,16 +1,11 @@
-import Button from './Button';
+import Customer from './Customer'
 
-const Customers = () => {
-    const onClick = () => {
-        console.log('click')
-    }
-
-
+const Customers = ({customers}) => {
     return (
-        <header>
-        <Button text='Add' color='#008CBA' onClick={onClick}/>
-        </header>
+        <div>
+            {customers.map((customer)=>(<Customer key={customer.id} customer={customer}/>))}
+        </div>
     )
 }
 
-export default Customers;
+export default Customers

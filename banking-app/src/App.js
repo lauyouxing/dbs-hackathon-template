@@ -8,7 +8,7 @@ import Insurance from './components/Insurance';
 import CreditCard from './components/CreditCard';
 import Promo from './components/Promo';
 import About from './components/About';
-import Customers from './components/Customers';
+import CustomersPage from './components/CustomersPage';
 
 
 const App = () => {
@@ -29,7 +29,7 @@ const App = () => {
             <NavDropdown.Divider/>
             <NavDropdown.Item as={Link} to="/promo">Promo</NavDropdown.Item>
           </NavDropdown>
-        <Nav.Link as={Link} to="/customers">Customers</Nav.Link>
+        <Nav.Link as={Link} to="/customerspage">Customers</Nav.Link>
         <Nav.Link as={Link} to="/about-us">About Us</Nav.Link>
         <Nav.Link as={Link} to="/contact-us">Contact Us</Nav.Link>
         </Nav>
@@ -48,8 +48,8 @@ const App = () => {
           <Route exact path="/promo">
             <Promo />
           </Route>
-          <Route exact path = "/customers">
-            <Customers />
+          <Route exact path = "/customerspage">
+            <CustomersPage />
           </Route>
           <Route exact path = "/about-us">
             <About />
